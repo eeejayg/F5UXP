@@ -1,0 +1,33 @@
+Column
+	- name: string
+	- dataIndex: string[] (for example source.ports[0])
+	OR
+	- dataAccessor: function portAccessor(data, index) { return data.source.ports[index] etc }
+
+Grid
+	- columns: Collection(ColumnModel)
+	- Collection(RowModel)
+
+Firewall extends Grid
+	- data
+
+Row
+	- children: Collection(RowModel)
+	- visible: bool
+	- type: string
+	- data: object
+
+RowView
+	- rendered
+
+GridView
+	- rows: DOMElement[]
+	- rowViews: Collection(RowView);
+
+
+-- EVENTS ------------------------------------
+
+row-rendered: triggered when a row has been rendered. the grid subscribes to this and causes the grid to recaclulate its row/column dimensions and then triggers:
+
+grid-layout: triggered when the grid row/column dimensions have been recalculated. each cell should resize itself in response to this event.
+

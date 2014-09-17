@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  <title>F5 Firewall Editor</title>
+
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAC4jAAAuIwF4pT92AAADbUlEQVQ4T12Te0xTZxjGj9kfXv6YGjOzmJmYqUFTmVd0SMuQzOic0S0mbMPEy4oxxqFoFqVDpBAHWiMWEEqwQ+MoFvBGCs4LwSpVU5lQIlqgN1tmr7TnHHo/PQ942gUm+5I3+ZLvfX/P9z7f+xHj4+PEh8EG/J8HdS9LyRZlt6ukmLEfyWMdJ0+9GqmWV0YM5pUApuRPbsCyH4UNA6dH1Q9DdGsLvFflcJ8/B/uxY7Bl74Pl6+9gWJXJOE5JathQeOYUQLx49HFnI91+BxHjEGIjHiAQACIRkNeVHOQkvNeUcJRWwLI3D7aj4g42Gp0+CQhoukTe+stgKRJjY2Og76rgqZKCam6Ct04O8uYdRKNRBINBUBQFp9MJ18CQJN4OESPJBQ6RyB/u04GDJQA+eR1c4iJO+TiG9x1A2GqDu1wGe0k5hn+vgunSFaizhAxlsvAIurVN9O7wUcRcrkkA2ajASI0MrjNlsB/PR9RHwn6iBOYt2eifk4xnc3m4vXgNtOWVFwinuOw+8887jHH3mQBEjWaE3+jhlf0BX0MTGIbh7IjAz/niGTRCV1CKxuQNUO4VdhPWrJxBc8YOsPTovwCWhe3H/bBs/h4m/jaEzW8T/YdCIdA0DY/HA6vVis7aOki373QTlq279YYVGYhRdEIdsRj3ZLtgXJ0JU+p2UHc7Mfp6EH7u3EeScDgcMJlM0Ol0qMg54CRs2blt+k/XgHGPIL5YDmBcuxUDn6VAP38VXn/Mg25GErRL0tB9QgxTfz/0ej20Wi0UUulTwl1zLa9vZhJCxreceAwxrt/BpRnon7UcfbOWoXeJAOr5yVAtWo0GXgqu7voBvT09UKvVeNTeVkQwJDWva3Gqz/uiN2FUPHpWboZmHg+GsirY/+7FjRVfov6L9biYshFifjrUHR1oUij8Xo97YWKQhv/qOOjRD7EBzuW405o9h3AjaR26fiuGy+2CRl4PiSADBelfobawEM3XG/GgTZX/3yhzE2V83HXuXvEZPKmW4fmfDXh0SYaK9E1ovSjFA6USKoUCVyorUJD7C6olksucV9OmfiYOomtvF5795lt3YRofIr4AvwoEyBXwIRSk4ae0VGRlbqJuK5V5E8VTABMR9Ptna1Sqg7VFp1sKc4Td+cKfX54V5d9qbW46QpHkJ//Pfw8ZN/MF90TA0AAAAABJRU5ErkJggg==" type="image/png" />
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+  <link type="text/css" href="css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+	<link type="text/css" href="css/fonts.css" rel="stylesheet" />
+  <link type="text/css" href="css/stylesheet.css" rel="stylesheet" />
+  <link type="text/css" href="css/scrollbars.css" rel="stylesheet" />
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/external/jquery/jquery-1.8.1.js"></script>
+  <script type="text/javascript" src="js/external/jquery/jquery-ui-1.8.23.custom.js"></script>
+  <script type="text/javascript" src="js/external/jquery/jquery.ui.autocomplete.html.js"></script>
+  <script type="text/javascript" src="js/external/jquery/jquery.event.drag-2.2.js"></script>
+  <script type="text/javascript" src="js/external/jquery/jquery.event.drop-2.2.js"></script>
+
+  <!-- Backbone/underscore -->
+  <script type="text/javascript" src="js/external/underscore/underscore.js"></script>
+  <script type="text/javascript" src="js/external/backbone/backbone.js"></script>
+
+  <!-- Plugins -->
+  <script type="text/javascript" src="js/controls/grid/BBGrid.js"></script>
+
+  <script type="text/javascript" src="js/external/awe/awe-compatibility.js"></script>
+  <script type="text/javascript" src="js/util/prototypes.js"></script>
+  <script type="text/javascript" src="js/controls/blades/blades.js"></script>
+  <script type="text/javascript" src="js/data/dataModel.js"></script>
+  <script type="text/javascript" src="js/transport/localData.js"></script>
+  <script type="text/javascript" src="js/data/enumerations.js"></script>
+  <script type="text/javascript" src="js/appSettings.js"></script>
+  <script type="text/javascript" src="js/util/util.js"></script>
+  <script type="text/javascript" src="js/sprites.js"></script>
+  <script type="text/javascript" src="js/util/spriteUtil.js"></script>
+  <script type="text/javascript" src="js/controls/header/mainHeader.js"></script>
+  <script type="text/javascript" src="js/controls/firewallgrid/firewallGrid.js"></script>
+  <script type="text/javascript" src="js/controls/tree/tree.js"></script>
+  <script type="text/javascript" src="js/controls/modal/modal.js"></script>
+  <script type="text/javascript" src="js/controls/sharedobjects/sharedObjectsList.js"></script>
+  <script type="text/javascript" src="js/controls/sharedobjects/sharedObjectsEditor.js"></script>
+  <script type="text/javascript" src="js/controls/sharedobjects/sharedObjectsHelpers.js"></script>
+  <script type="text/javascript" src="js/util/appUtil.js"></script>
+  <script type="text/javascript" src="js/data/mockSupport.js"></script>
+  <script type="text/javascript" src="js/data/mockServer.js"></script>
+  
+  
+  <script type="text/javascript">   
+
+
+  function getDataInterface() {
+    if ( typeof(appLocalData) == "undefined" ) {
+      throw("call to getDataInterface failed because 'appLocalData' does not exist");
+      return;
+    }
+    return appLocalData;
+  }
+  
+  
+  function getFirewall( resource, uiOnComplete )
+  {
+    appSharedObjectsList.sharedObjectsList("unbrush");
+
+    $("#mainContainer").blades("setPanelTitle", "firewalls", shortFirewallName(resource));
+    appDeviceTree.tree("clearInterfaceCount");
+    $("#mainContainer").blades("show", "firewalls");
+    $("#mainContainer").blades("hide", "lists");
+
+    if (firewallView) {
+      firewallView.close();
+      BBGrid.pubSub.unbind();
+      firewallView = null;
+    }
+
+    appLocalData.getObject( resource, function(obj) { loadFirewall(resource,obj,uiOnComplete) });
+  }
+
+
+  function randomColor() {
+    var r = Math.round(Math.random() * 255).toString(16);
+    var g = Math.round(Math.random() * 255).toString(16);
+    var b = Math.round(Math.random() * 255).toString(16);
+    (r.length == 1) && (r = "0"+r);
+    (g.length == 1) && (g = "0"+g);
+    (b.length == 1) && (b = "0"+b);
+    return "#" + r + g + b;
+  }
+
+  function massGrid()
+  {
+    var numCells = 18;
+    var numRows = 1000;
+    var cellWidth = 100;
+    var cellMargin = 2;
+    var rowWidth = ( numCells + 1 ) * ( cellMargin + cellWidth + cellMargin );
+    var rowHeight = 80;
+    var rowMargin = 2;
+    
+    var container = document.createElement("DIV");
+    container.className = "blockFloatNot";
+    container.style.width = "auto";
+    container.style.height = "auto";
+    
+    var row = document.createElement("DIV");
+    row.className = "blockFloatNot";
+    row.style.width = rowWidth + "px";
+    row.style.height = rowHeight + "px";
+    row.style.margin = rowMargin + "px";
+
+    var cell = document.createElement("DIV");
+    cell.className = "blockFloat";
+    cell.style.width = cellWidth + "px";
+    cell.style.height = "40px";
+    cell.style.backgroundColor = "#555555";
+    cell.style.margin = "2px";
+    cell.style.color = "#FFFFFF";
+
+    var cellChild = document.createElement("DIV");
+    cellChild.className = "blockFloatNot";
+    cellChild.style.width = "100%";
+    cellChild.style.height = "auto";
+
+    for ( var curRow = 0; curRow < numRows; curRow++ ) {
+    
+      var instRow = row.cloneNode();
+      instRow.style.position = "absolute";
+      instRow.style.left = "0px";
+      instRow.style.top = curRow * ( rowMargin + rowHeight + rowMargin ) + "px";
+      
+      for ( var curCell = 0; curCell < numCells; curCell++ ) {
+        var instCell = cell.cloneNode();
+        instCell.style.position = "absolute";
+        instCell.style.left = curCell * ( cellMargin + cellWidth + cellMargin ) + "px";
+        instCell.style.height = 40 + Math.round(Math.random()*40) + "px";
+//        instCell.innerHTML = "R" + curRow + "C" + curCell; 
+
+        var count = Math.round(Math.random() * 5);
+        for (var ch = 0; ch < count; ++ch) {
+          var instChild = cellChild.cloneNode();
+          instChild.style.position = "absolute";
+          instChild.style.backgroundColor = randomColor();
+          instChild.innerHTML = "object" + Math.round(Math.random() * 3209);
+          instCell.appendChild(instChild);
+        }
+        instRow.appendChild(instCell);   
+      }
+      
+      container.appendChild( instRow );
+    }
+            
+    return $(container);
+  }
+  
+  
+  function loadFirewall( resource, firewallObj, uiOnComplete )
+  {
+    new sharedObjectListFromFirewall( firewallObj );
+
+    if (!firewallObj) { 
+      firewallObj = { "fw-rules" : [] }
+    }
+  
+    if (typeof(firewallContainer) == "undefined") {
+
+      firewallContainer = $("<div/>").css({
+        width: "auto",
+        display: "block",
+        backgroundColor: "#f7f7f5",
+        height: "auto"
+      }).addClass("blockFloatNot");
+
+      $("#firewalls").parent().css({
+        //overflowX: "hidden",
+        //overflowY: "hidden",
+        //DEBUG
+        overflowX: "auto",
+        overflowY: "auto",
+        height: "100%",
+        width: "100%"
+      });
+      $("#firewalls").css({
+        height: "100%",
+        width: "100%"
+      })
+
+    }
+
+    firewallContainer.empty().detach();
+    //$("<div>" + Math.random() + "</div>").appendTo(firewallContainer);
+    firewallContainer.append( massGrid() );
+    appBlades.blades( 'addContent', 'firewalls', firewallContainer );
+    return;
+    
+    
+    var fwrules = firewallObj["fw-rules"] ? firewallObj : {
+      "fw-rules":firewallObj.rules
+    };
+
+//    if (firewallView) {
+//      firewallView.close();
+//      BBGrid.pubSub.unbind();
+//    }
+
+    firewallContainer.empty().detach();
+    
+    var firewallGrid = new FirewallGrid({
+      data: fwrules
+    });
+
+    firewallView = new BBGrid.GridView({
+      model: firewallGrid,
+      el: firewallContainer[0]
+    });
+
+    appBlades.blades( 'addContent', 'firewalls', firewallContainer );
+
+    
+    uiOnComplete();
+  }
+
+
+  function saveButtonClick()
+  {
+    appModal.modal("show");
+    appLocalData.saveEnterprise( function() { appModal.modal("hide"); } );
+  }
+
+
+  function sharedObjectClick( sharedObjectParent ) {
+
+    appSharedObjectsEditor.sharedObjectsEditor( "editSharedObject", sharedObjectParent ) ;
+            
+    $("#mainContainer").blades("setPanelTitle", "lists", sharedObjectParent.model.name );
+    $("#mainContainer").blades("show", "lists");
+    $("#mainContainer").blades("hide", "firewalls");
+    
+    appSharedObjectsList.sharedObjectsList("unselectAll");
+    sharedObjectParent.select();
+    
+    appDeviceTree.tree("clearInterfaceCount");
+
+    appLocalData.getObjectInterfaces( sharedObjectParent.model.name, function( arrInterfaces ) { 
+      sharedObjectParent.setObjectInterfaces( arrInterfaces ); 
+      appDeviceTree.tree( "showInterfaceCount", arrInterfaces );
+    });
+ 
+  }
+
+    
+  function startup()
+  {   
+    firewallView = null;
+     
+    if (( getIEVersionNumber() > 0 ) && ( getIEVersionNumber() != 9 )) { 
+      startupMsg( startupMsgs["compatibleVersions"] ); 
+      return; 
+    }
+
+    addBrowserClass();
+
+    // basic DOM/UI structures
+    appHeader = $("#mainContainer").mainheader();
+    appBlades = $("#mainContainer").blades( defaultBladesDef );
+    appModal = $("#mainContainer").modal(); 
+    appModal.modal("show");
+
+    // create local data store and transport
+    appLocalData = new localData();
+
+    // add proxy images for unimplemented blades
+    appBlades.blades('addContent', 'trendingToday', $("<img/>").attr({ src: "images/trendingProxy.png" }));
+    appBlades.blades('addContent', 'monitor', $("<img/>").attr({ src: "images/monitoringProxy.png" }));
+    appBlades.blades('addContent', 'people', $("<img/>").attr({ src: "images/peopleProxy.png" }));
+
+    // create and load shared objects list
+    appSharedObjectsEditor = $("#lists").sharedObjectsEditor();   
+    appSharedObjectsList = $("#sharedObjects").sharedObjectsList( { "onClickCallback" : sharedObjectClick } ); 
+    appSharedObjectsList.sharedObjectsList("detachContainer");
+    appLocalData.getCollection("schedules", function (obj) { appSharedObjectsList.sharedObjectsList("addScheduleItems",obj) });
+    appLocalData.getCollection( "rule-lists", function(obj) { appSharedObjectsList.sharedObjectsList("addRuleListItems",obj) } );
+    appLocalData.getCollection("address-lists", function (obj) { appSharedObjectsList.sharedObjectsList("addAddressListItems",obj) });
+    appLocalData.getCollection("port-lists", function (obj) { appSharedObjectsList.sharedObjectsList("addPortListItems",obj) });
+    appSharedObjectsList.sharedObjectsList("attachContainer");
+
+    // get and load firewall tree
+    appLocalData.getCollection("interfaces", function(obj){
+      appModal.modal("hide");
+      var options = { nodes: obj, callback: getFirewall };
+      appDeviceTree = $("#devices").tree(options);
+    });
+    
+  }
+  
+  $(document).ready( startup );
+
+  </script>
+
+</head>
+
+<body>
+
+<div id="mainContainer"></div>`
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,401 @@
+
+* {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+	color: #000000;
+}
+
+html, input, button {
+  -webkit-appearance:none;
+  -webkit-touch-callout:none; 
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -webkit-text-size-adjust:none;
+}
+
+body {
+  font-family: Arial, Helvetica;
+  font-size:66%;
+  overflow:hidden;
+}
+
+img {
+  draggable: false;  
+}
+
+.absolute {
+	position: absolute;
+}
+
+.blockFloat {
+  position:relative;
+  display:block;
+  float:left;
+  clear:none;
+  left:0px;
+  top:0px;
+}
+
+.blockFloatNot {
+  position:relative;
+  display:block;
+  float:left;
+  clear:left;
+  left:0px;
+  top:0px;
+}
+
+.blockFloatRight {
+  position:relative;
+  display:block;
+  float:right;
+  clear:none;
+  left:0px;
+  top:0px;
+}
+
+.blockFloatRightNot, .blockFloatNotRight {
+  position:relative;
+  display:block;
+  float:right;
+  clear:right;
+  left:0px;
+  right:0px;
+}
+
+#mainContainer {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  min-width:1024px;
+  min-height:748px;
+  background-color:#EAEAEB;
+}
+
+.ellipsis {  
+  white-space: nowrap;  
+  overflow: hidden;  
+  text-overflow: ellipsis;  
+  -o-text-overflow: ellipsis;  
+  -ms-text-overflow: ellipsis;  
+}  
+
+.unselectable {
+  -webkit-user-select:none; 
+  -moz-user-select: none;
+  -khtml-user-select:none;
+  -ms-user-select: none;
+  user-select:none;   
+}
+
+.selectable {
+  -webkit-user-select: default;
+  -moz-user-select: default;
+  -khtml-user-select: default;
+  -ms-user-select: default;
+  user-select: default;
+}
+
+#startupMsg {
+  position:relative;
+  display:block;
+  left:-205px;
+  top:226px;
+  width:410px;
+  color:#7d7d7d;
+  font-family:Arial;
+  font-size:24px;
+  font-weight:normal;
+  line-height:28px;
+}
+
+.horizontalCenter {
+  position:absolute;
+  display:block;
+  left:50%;
+  top:0px;  
+  width:4px;
+  height:100%;
+}
+
+#startupMsg span, #installTester span {
+  font-weight:bold;
+  color:#4098ba;
+}
+
+#startupMsg img {
+  display:inline;
+}
+
+.dowCheckbox {
+  display:none;
+  visibility:hidden;
+}
+
+.dowCheckbox + label 
+{
+  padding-left:14px;
+  background-image: url(../images/sprites.png);
+  background-repeat: no-repeat;
+  background-position: -89px -72px;
+  color: #A7A9AC;
+}
+
+.dowCheckbox:checked + label {
+  background-position: -89px -86px;
+  color: #808285;
+}
+
+.simpleRow {
+  width:100%;
+  height:39px;
+  background-color:#F7F7F5;
+  border-bottom:1px solid #EEEEEE;
+  border-top:1px solid transparent;
+}
+
+.simpleRow:first-child {
+  border-top:1px solid #EEEEEE;
+}
+
+.treeNodeContainerLevel0 {
+  min-height:41px;
+  width:100%;
+  border-bottom:1px solid #ecedea;
+  padding-bottom:14px;
+}
+
+.treeNodeContainerLevel1 
+{
+  margin-top:10px;
+}
+
+.treeNodeContainerLevel2, .treeNodeContainerLevel3, .treeNodeContainerLevel4 
+{
+  margin-top:14px;
+  margin-left:14px;
+}
+
+.treeNodeLabelLevel0 
+{
+  color:#333333;
+  font-family:'open_sans_semiboldregular';
+  font-size:17px;
+}  
+
+.treeNodeLabelLevel1, .treeNodeLabelLevel2, .treeNodeLabelLevel3
+{
+  color:#4D4D4D;
+  font-family:'open_sansbold';
+  font-size:11px;
+}
+
+.treeNodeLabelLevel4
+{
+  color:#4D4D4D;
+  font-family:'open_sansregular';
+  font-size:11px;
+}
+
+.treeNodeArrow, .expand-collapse
+{
+  background-image: url(../images/sprites.png);
+  background-repeat: no-repeat;
+  width:9px;
+  height:9px;
+  margin-right:8px;
+  margin-left:14px;
+  cursor:pointer;
+}
+
+.treeNodeArrow.open, .expand-collapse.open
+{
+  background-position: -42px -123px;
+}
+
+.treeNodeArrow.closed, .expand-collapse.closed
+{
+  background-position: -42px -72px;
+}
+
+.treeNodeLabelContainer0
+{
+  margin-top:19px;
+}
+
+.treeNodeLabelContainer0 .treeNodeArrow
+{
+  margin-top:5px;
+}
+
+.treeNodeLabelContainer1 .treeNodeArrow, 
+.treeNodeLabelContainer2 .treeNodeArrow, 
+.treeNodeLabelContainer3 .treeNodeArrow, 
+.treeNodeLabelContainer4 .treeNodeArrow 
+{
+  margin-top:1px;
+  margin-right:9px;
+}
+
+.treeNodeLabelContainer2 .treeNodeArrow 
+{
+  margin-left:16px;
+}
+
+.treeNodeLabelContainer3 .treeNodeArrow
+{
+  margin-left:18px;
+}
+
+.treeNodeLabelContainer4 .treeNodeArrow 
+{
+  margin-left:15px;
+}
+
+/*          */
+/* GRID CSS */
+/*          */
+
+.column-group-label {
+	color: #A7A9AC;
+	text-transform: uppercase;
+	font-size: 9px;
+}
+
+.grid-row, .group-header, .grid-header {
+	position: relative;
+	left: 35px;
+}
+
+.grid-header {
+	margin-left: 35px;
+}
+
+.group-header {
+	padding: 15px 0px;
+	font-weight: bold;
+	font-size: 13px;
+	/*height: 40px;*/
+}
+
+.group-header.group-collapsed {
+	background-color: #ffffff;
+	padding-left: 20px;
+	border-top: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	border-left: 4px solid #2F3569;
+	margin-bottom: 20px;
+}
+
+.group-header.group-expanded {
+	background-color: transparent;
+	padding-left: 0px;
+}
+
+/*.grid-row {
+	border-top: 1px solid #DDDDDD;
+}
+*/
+.grid-row:hover {
+	background-color: #ffffff;
+}
+
+.grid-row.group {
+	border-left: 4px solid #2F3569;
+	border-right: 1px solid #DDDDDD;
+}
+
+.grid-row.last {
+	/*border-bottom: 1px solid #DDDDDD;*/
+	margin-bottom: 20px;
+}
+
+/***************/
+/* Row heights */
+/***************/
+
+.grid-header {
+	height: 50px;
+}
+
+.group-header {
+	height: 20px;
+}
+
+.grid-row {
+	height: auto;
+}
+
+/*.group-header .cell {
+}
+*/
+
+.cell-outer {
+    vertical-align: top;
+}
+
+.grid-row.editing {
+	background-color: #f0f9fd;
+}
+
+.cell-inner {
+	margin: 15px 5px;
+	text-align: left;
+}
+
+.cell-outer.editing .cell-inner {
+	background-color: #ffffff;
+}
+
+.grid-header .cell-inner {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.grid-row .cell-inner * {
+	font-size: 11px;
+}
+
+.ui-menu-item {
+	font-size: 11px;
+}
+
+.cell-inner textarea {
+	margin: -3px;
+}
+
+*:focus {
+	outline: none;
+	border: 1px solid #e0e9ed;
+}
+
+/*.grid-row .cell-outer {
+	border-top: 1px solid #DDDDDD;
+}
+
+.grid-row.last .cell-outer {
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.grid-row .cell-outer.first {
+	border-left: 4px solid #DDDDDD;
+}
+
+.grid-row .cell-outer.last {
+	border-right: 1px solid #DDDDDD;
+}
+*/
+
+.drag-column {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 15px 20px;
+	background-color: #ffffff;
+	opacity: 0.5;
+}
+

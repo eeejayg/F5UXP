@@ -1,0 +1,15 @@
+External library sources
+
+jQuery 1.8.1 – latest version of jQuery: http://jquery.com/ 
+
+jQuery UI 1.8.23 – includes reusable common controls, such as a text input box with autocomplete: http://jqueryui.com/ 
+
+jQuery.ui.autocomplete – adds support for HTML labels in jQuery UI autocomplete control, from https://github.com/scottgonzalez/jquery-ui-extensions/blob/master/autocomplete/jquery.ui.autocomplete.html.js
+
+jQuery.event.drag/drop – well designed and widely used drag/drop plugins for jQuery, with plenty of demo code at http://threedubmedia.com/
+
+underscore.js – Javascript utility library that is a dependency of Backbone. It has many useful operations on objects, collections and functions: http://documentcloud.github.com/underscore/
+
+Backbone.js – model and view functionality with event binding for javascript: http://backbonejs.org/
+
+awe-compatibility.js - cross-browser compatibility utils from our own MIT licensed Artefact JS supprt library: https://github.com/sambaker/awe-core

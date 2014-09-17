@@ -1,0 +1,19 @@
+﻿Route Domains never overlap in their IP space, therefore it is impossible to have a 
+VIP 1.2.3.4 on both RouteDomain0 and RouteDomain1.  Therefore it is not necessary to specify the 
+route domain in the resource URL to a VIP.  However, it is convenient for us to know the 
+RouteDomain of a VIP so we can display it in the heirarchical tree view.
+
+There are Protocol settings that would cause the Ports list to be meaningless.  Therefore, when
+certain Protocol settings are chosen, the Ports list must be set to blank.  There is probably
+the need to save the last Ports list setting however, because if a user switches the Protocol back
+to a meaningful setting, we might want to restore the ports list.
+
+In a Rule:
+  if status=scheduled, schedule=someScheduleName
+  if schedule=someScheduleName, status=scheduled
+  if schedule=blank, status=enabled
+Do we need to toggle status back to the last stored value?  Hope not.
+
+
+
+

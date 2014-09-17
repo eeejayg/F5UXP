@@ -1,0 +1,31 @@
+﻿
+::-webkit-scrollbar {
+    width: 9px;
+}
+ 
+::-webkit-scrollbar:horizontal 
+{
+    height: 9px;
+}
+
+::-webkit-scrollbar-track 
+{
+    width: 9px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 9px;
+    width: 9px;
+    background-color:#BFBFBF;
+}
+
+::-webkit-scrollbar-thumb:horizontal 
+{
+    height:9px;
+}
+
+::-webkit-scrollbar-corner
+{
+  background-color:#f7f7f5;
+}
+

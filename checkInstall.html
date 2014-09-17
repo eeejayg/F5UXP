@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- <html manifest="axiom.appcache" xmlns="http://www.w3.org/1999/xhtml"> -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  <title>F5 Firewall Editor</title>
+
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAC4jAAAuIwF4pT92AAADbUlEQVQ4T12Te0xTZxjGj9kfXv6YGjOzmJmYqUFTmVd0SMuQzOic0S0mbMPEy4oxxqFoFqVDpBAHWiMWEEqwQ+MoFvBGCs4LwSpVU5lQIlqgN1tmr7TnHHo/PQ942gUm+5I3+ZLvfX/P9z7f+xHj4+PEh8EG/J8HdS9LyRZlt6ukmLEfyWMdJ0+9GqmWV0YM5pUApuRPbsCyH4UNA6dH1Q9DdGsLvFflcJ8/B/uxY7Bl74Pl6+9gWJXJOE5JathQeOYUQLx49HFnI91+BxHjEGIjHiAQACIRkNeVHOQkvNeUcJRWwLI3D7aj4g42Gp0+CQhoukTe+stgKRJjY2Og76rgqZKCam6Ct04O8uYdRKNRBINBUBQFp9MJ18CQJN4OESPJBQ6RyB/u04GDJQA+eR1c4iJO+TiG9x1A2GqDu1wGe0k5hn+vgunSFaizhAxlsvAIurVN9O7wUcRcrkkA2ajASI0MrjNlsB/PR9RHwn6iBOYt2eifk4xnc3m4vXgNtOWVFwinuOw+8887jHH3mQBEjWaE3+jhlf0BX0MTGIbh7IjAz/niGTRCV1CKxuQNUO4VdhPWrJxBc8YOsPTovwCWhe3H/bBs/h4m/jaEzW8T/YdCIdA0DY/HA6vVis7aOki373QTlq279YYVGYhRdEIdsRj3ZLtgXJ0JU+p2UHc7Mfp6EH7u3EeScDgcMJlM0Ol0qMg54CRs2blt+k/XgHGPIL5YDmBcuxUDn6VAP38VXn/Mg25GErRL0tB9QgxTfz/0ej20Wi0UUulTwl1zLa9vZhJCxreceAwxrt/BpRnon7UcfbOWoXeJAOr5yVAtWo0GXgqu7voBvT09UKvVeNTeVkQwJDWva3Gqz/uiN2FUPHpWboZmHg+GsirY/+7FjRVfov6L9biYshFifjrUHR1oUij8Xo97YWKQhv/qOOjRD7EBzuW405o9h3AjaR26fiuGy+2CRl4PiSADBelfobawEM3XG/GgTZX/3yhzE2V83HXuXvEZPKmW4fmfDXh0SYaK9E1ovSjFA6USKoUCVyorUJD7C6olksucV9OmfiYOomtvF5795lt3YRofIr4AvwoEyBXwIRSk4ae0VGRlbqJuK5V5E8VTABMR9Ptna1Sqg7VFp1sKc4Td+cKfX54V5d9qbW46QpHkJ//Pfw8ZN/MF90TA0AAAAABJRU5ErkJggg==" type="image/png" />
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+  <link type="text/css" href="css/jquery-ui-1.8.22.custom.css" rel="stylesheet" />
+	<link type="text/css" href="css/fonts.css" rel="stylesheet" />
+  <link type="text/css" href="css/stylesheet.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="js/jquery-1.8.1.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.8.23.custom.min.js"></script>
+  <script type="text/javascript" src="js/blades.js"></script>
+  <script type="text/javascript" src="js/prototypes.js"></script>
+  <script type="text/javascript" src="js/mockSupport.js"></script>
+  <script type="text/javascript" src="js/mockServer.js"></script>
+  <script type="text/javascript" src="js/dataModel.js"></script>
+  <script type="text/javascript" src="js/localData.js"></script>
+  <script type="text/javascript" src="js/enumerations.js"></script>
+  <script type="text/javascript" src="js/appSettings.js"></script>
+  <script type="text/javascript" src="js/util.js"></script>
+  <script type="text/javascript" src="js/sprites.js"></script>
+  <script type="text/javascript" src="js/spriteUtil.js"></script>
+  <script type="text/javascript" src="js/mainHeader.js"></script>
+  
+  <script type="text/javascript">   
+    
+
+  function installTester()
+  {
+    var _i = this;
+
+    _i.getObject = function( objectName )
+    {
+      $.ajax({
+        type: "GET",
+        url: dbUrl + "objects/" + objectName,
+        success: _i.showObject,
+        error: function (requestObject, textStatus, errorThrown) { alert("Transport error: " + errorThrown); },
+        processData: false
+      });
+      
+    }
+
+    _i.getCollection = function( collectionName )
+    {
+      $.ajax({
+        type: "GET",
+        url: dbUrl + "objects/" + collectionName,
+        success: _i.showCollection,
+        error: function( requestObject, textStatus, errorThrown ) { alert("Transport error: " + errorThrown); },
+        processData: false
+      });
+
+      _i.chooseObjectLabel.hide();
+      _i.chooseObjectDD.find('option').remove().end().hide();
+    }
+
+    _i.showObject = function( dat, jQueryStatusCode, requestObject )
+    {
+      var obj = JSON.parse(dat).obj.data;
+      var str = JSON.stringify(obj,null,3);
+
+      if ( $(document.body).hasClass("msie") ) {
+        str = str.replace(/\n/g,"<br/>");
+      }
+
+      _i.textResult.html(str);
+      _i.textResult.show();
+    }
+
+    _i.showCollection = function( dat, jQueryStatusCode, requestObject )
+    {
+      var arr = JSON.parse(dat).obj.data;
+
+      _i.chooseObjectDD.append(new Option("","val0"));
+
+      $.each(arr, function (val, text) {
+        _i.chooseObjectDD.append(new Option(text, val))
+      });
+
+      _i.chooseObjectLabel.show();
+      _i.chooseObjectDD.show();
+    }
+
+    _i.objectSelect = function()
+    {
+      _i.textResult.hide();
+      $("#chooseObjectDD option[value='val0']").attr("disabled", true);
+      var collectionName = $("#collectionDD option:selected").text();
+      _i.getObject( collectionName + "~" + $("#chooseObjectDD option:selected").text() );
+    }
+
+    _i.collectionSelect = function()
+    {
+      _i.textResult.hide();
+      $("#collectionDD option[value='val0']").attr("disabled", true);
+      _i.getCollection( $("#collectionDD option:selected").text() );
+    }
+
+    _i.testFailure = function( jQueryStatusCode )
+    {
+      alert("Test failed against " + dbServer );
+    }
+
+    _i.testSuccess = function()
+    {
+      _i.chooseObjectLabel.hide();
+      _i.chooseObjectDD.hide();
+      _i.interfaceContainer.css("display", "block");
+      $("#collectionDD").val("val0");
+      alert("Test succeeded.\n\nUse the exposed interface to examine objects.");
+    }
+
+    _i.testing = function()
+    {
+      _i.interfaceContainer.hide();
+      _i.textResult.hide();
+
+      $.ajax({
+        type: "GET",
+        url: dbServer + "api/db-names",
+        success: _i.testSuccess,
+        error: _i.testFailure,
+        processData: false
+      });
+
+    }
+
+    _i.init = function()
+    {
+      _i.container = $("<div/>")
+        .attr({ 
+          "class": "blockFloatNot fntBold siz15",
+          "id" : "installTester"
+          })
+        .css({
+          "width": "600px",
+          "color": "#7D7D7D",
+          "marginLeft" : "37px",
+          "lineHeight" : "22px",
+          "marginTop" : "37px"
+        })
+        .appendTo("#mainContainer");
+
+      var content = "The API server location is set in <span>js/appSettings.js</span> and is currently set to <span>" + dbServer + "</span>";
+      content += "<br/><br/>This should be set to the web root of your installation. It ends with a slash.";
+      content += "<br/><br/>";
+      content += "The database name is also set in <span>js/appSettings.js</span> and is currently set to <span>" + dbName + "</span>";
+      content += " . The database <span>store/</span> is being used by Artefact for development.  F5 should set the dbName to <span>deploy/</span>";
+      content += "<br/><br/>";
+
+      _i.container.html(content);
+
+      _i.testButton = $("<button/>")
+        .attr({
+          "class":"blockFloatNot fntBold siz15"
+        })
+        .css({
+          "marginLeft" : "37px",
+          "color" : "#7D7D7D"
+        })
+        .html("Test server")
+        .bind( "click" , _i.testing )
+        .appendTo("#mainContainer")
+
+      $("<div/>")
+        .attr({
+          "class" : "blockFloatNot"
+        })
+        .appendTo("#mainContainer");
+
+
+      _i.interfaceContainer = $("<div/>")
+        .attr({
+          "class" : "blockFloat"
+        })
+        .css({
+          "marginLeft" : "37px",
+          "marginTop" : "20px",
+          "color" : "#7D7D7D",
+          "width" : "auto",
+          "height" : "auto",
+          "display" : "none"
+        })
+        .appendTo("#mainContainer")
+
+      _i.ddLabel = $("<div/>")
+        .attr({
+          "class" : "blockFloat fntBold siz15"
+        })
+        .css({
+          "color" : "#7D7D7D"
+        })
+        .html("Choose a collection: ")
+        .appendTo(_i.interfaceContainer)
+
+      var collectionItems = {
+        val0 : "",
+        val1 : "port-lists",
+        val2 : "address-lists",
+        val3 : "schedules",
+        val4 : "rule-lists"
+      }
+
+      _i.collectionDD = $("<select value=''/>")
+        .attr({
+          "id" : "collectionDD",
+          "class" : "blockFloat fntRegular siz13"
+        })
+        .css({
+          "marginLeft" : "10px",
+          "marginTop" : "-2px",
+          "font-family" : "Arial",
+        })
+        .bind( "change" , _i.collectionSelect )
+        .appendTo(_i.interfaceContainer)
+
+      $.each(collectionItems, function(val,text){
+        _i.collectionDD.append( new Option(text,val) )
+      });
+
+      _i.chooseObjectContainer = $("<div/>")
+        .attr({
+          "id" : "chooseObjectContainer",
+          "class" : "blockFloatNot"
+        })
+        .css({
+          "marginTop" : "10px",
+          "display" : "block"
+        })
+        .appendTo(_i.interfaceContainer)
+
+      _i.chooseObjectLabel = _i.ddLabel.clone().html("Choose an object:").appendTo(_i.chooseObjectContainer);
+      _i.chooseObjectDD = _i.collectionDD.clone().attr("id","chooseObjectDD").appendTo(_i.chooseObjectContainer);
+      _i.chooseObjectDD.find('option')
+        .remove()
+        .end()
+        .bind( "change" , _i.objectSelect )
+        .css( "font-family" , "Arial" );
+
+      _i.textResult = $("<textarea/>")
+        .attr({
+          "id" : "textResult",
+          "class" : "blockFloatNot",
+          "spellcheck" : "false"
+        })
+        .css({
+          "marginLeft" : "37px",
+          "marginTop" : "14px",
+          "display" : "block",
+          "font-size" : "11px",
+          "font-family" : "monospace",
+          "width" : "90%",
+          "height" : "400px"
+        })
+        .appendTo("#mainContainer")
+        .hide();
+
+    }()
+  }
+
+
+  function startup()
+  {    
+    if (( getIEVersionNumber() > 0 ) && ( getIEVersionNumber() != 9 )) { startupMsg( startupMsgs["compatibleVersions"] ); return; }
+
+    addBrowserClass();
+    
+    mainHeader = $("#mainContainer").mainheader();
+    mainHeader.mainheader("minimize");
+    
+    new installTester();
+  }
+  
+  $(document).ready(startup);
+
+  </script>
+
+</head>
+
+<body>
+
+<div id="mainContainer"></div>`
+
+</body>
+
+</html>
+
+
